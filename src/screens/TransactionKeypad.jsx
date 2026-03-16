@@ -283,7 +283,7 @@ function SuccessSheet({ type, amount, customer, remarks, onDone, onNewTransactio
             {isUdhar ? "Credit Given" : "Payment Received"}
           </div>
           <div style={{ fontSize: 38, fontWeight: 800, color: t.text, fontFamily: "'JetBrains Mono', monospace" }}>
-            â‚¹{formattedAmount}
+            {"\u20B9"}{formattedAmount}
           </div>
           {customer && (
             <div style={{ fontSize: 14, color: t.muted, marginTop: 6 }}>
