@@ -51,13 +51,16 @@ function Badge({ children, color, bg }) {
   );
 }
 
-function Card({ children, style = {} }) {
+function Card({ children, style = {}, ...props }) {
   return (
-    <div style={{
-      background: t.card, borderRadius: 14, padding: 14,
-      boxShadow: "0 1px 4px rgba(0,0,0,0.05)",
-      ...style,
-    }}>
+    <div
+      {...props}
+      style={{
+        background: t.card, borderRadius: 14, padding: 14,
+        boxShadow: "0 1px 4px rgba(0,0,0,0.05)",
+        ...style,
+      }}
+    >
       {children}
     </div>
   );
@@ -167,13 +170,36 @@ function SyncHealth({ status = "EXCELLENT", message = "Persistent queue is empty
 }
 
 // â”€â”€â”€ Recent Transactions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-const TRANSACTIONS = [
+const FALLBACK_TRANSACTIONS = [
   { id:1, name:"Rajesh Kumar",  initials:"RK", type:"Udhar", time:"10:45 AM",  amount:"\u2212\u20B9450",   amountColor:t.orange, status:"SYNCED",  statusColor:t.green,  avatarBg:t.bluePale,  avatarColor:t.blue  },
   { id:2, name:"Anita Sharma",  initials:"AS", type:"Jama",  time:"09:12 AM",  amount:"+\u20B91,200",  amountColor:t.green,  status:"PENDING", statusColor:t.yellow, avatarBg:t.greenPale, avatarColor:t.green },
   { id:3, name:"Vikram Singh",  initials:"VS", type:"Udhar", time:"Yesterday", amount:"\u2212\u20B92,100",  amountColor:t.orange, status:"SYNCED",  statusColor:t.green,  avatarBg:t.bluePale,  avatarColor:t.blue  },
 ];
 
-function RecentTransactions({ onViewAll, onTxnPress }) {
+function formatTransaction(tx) {
+  const amountNumber = Number(tx.amount || 0);
+  const isCredit = String(tx.type || "").toLowerCase() === "udhar";
+
+  return {
+    id: tx.id,
+    name: tx.name || "Walk-in Customer",
+    initials: tx.initials || (tx.name || "Walk-in Customer").split(" ").map((part) => part[0]).join("").slice(0, 2).toUpperCase(),
+    type: isCredit ? "Udhar" : "Jama",
+    time: tx.time
+      ? new Date(tx.time).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })
+      : "Just now",
+    amount: `${isCredit ? "-" : "+"}\u20B9${Math.abs(amountNumber).toLocaleString("en-IN")}`,
+    amountColor: isCredit ? t.orange : t.green,
+    status: "SYNCED",
+    statusColor: t.green,
+    avatarBg: isCredit ? t.bluePale : t.greenPale,
+    avatarColor: isCredit ? t.blue : t.green,
+  };
+}
+
+function RecentTransactions({ transactions = [], onViewAll, onTxnPress }) {
+  const items = transactions.length ? transactions.map(formatTransaction) : FALLBACK_TRANSACTIONS;
+
   return (
     <div>
       <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", margin:"0 16px 10px" }}>
@@ -187,7 +213,7 @@ function RecentTransactions({ onViewAll, onTxnPress }) {
         </button>
       </div>
       <div style={{ margin:"0 16px", display:"flex", flexDirection:"column", gap:10 }}>
-        {TRANSACTIONS.map((tx, i) => (
+        {items.map((tx, i) => (
           <TxnRow key={tx.id} tx={tx} delay={280 + i * 80} onPress={onTxnPress} />
         ))}
       </div>
@@ -418,6 +444,7 @@ export default function HomeDashboard({
   jamaCount      = 8,
   syncStatus     = "EXCELLENT",
   syncMessage    = "Persistent queue is empty. All transactions are synced to cloud.",
+  transactions   = [],
   onNavigate     = () => {},
   onAddTransaction = () => {},
   onViewAll      = () => {},
@@ -443,7 +470,7 @@ export default function HomeDashboard({
           <HeroCard amount={totalCredit} change={creditChange} />
           <StatsRow udharCount={udharCount} jamaCount={jamaCount} />
           <SyncHealth status={syncStatus} message={syncMessage} />
-          <RecentTransactions onViewAll={onViewAll} onTxnPress={onTxnPress} />
+          <RecentTransactions transactions={transactions} onViewAll={onViewAll} onTxnPress={onTxnPress} />
           {/* Bottom spacer so FAB doesn't cover last row */}
           <div style={{ height:"calc(72px + env(safe-area-inset-bottom))" }} />
         </div>

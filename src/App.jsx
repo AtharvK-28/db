@@ -208,6 +208,7 @@ function AppRoutes() {
 
   const {
     syncOnline,
+    transactions,
     addTransaction,
     selectedCustomer,
     setSelectedCustomer,
@@ -322,6 +323,7 @@ function AppRoutes() {
             element={
               <HomeDashboard
                 syncOnline={syncOnline}
+                transactions={transactions}
                 onNavigate={navigateTo}
                 onAddTransaction={() => navigateTo("keypad")}
                 onViewAll={() => navigateTo("customers")}
