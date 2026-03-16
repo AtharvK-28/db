@@ -659,7 +659,7 @@ export default function ReportsDashboard({
           {/* Net Position Trend */}
           <div className="section-card">
             <SectionHeader title="Net Position Trend"/>
-            <div style={{ padding:"0 0 0", fontSize:11, color:t.muted, padding:"0 16px 8px" }}>
+              <div style={{ padding:"0 16px 8px", fontSize:11, color:t.muted }}>
               Daily Udhar minus Jama â€” positive = you're giving more credit
             </div>
             <TrendLine
