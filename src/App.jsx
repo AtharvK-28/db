@@ -8,7 +8,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import {
-  HashRouter,
+  BrowserRouter,
   Routes,
   Route,
   Navigate,
@@ -419,10 +419,10 @@ function AppRoutes() {
 
 export default function App() {
   return (
-    <HashRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+    <BrowserRouter>
       <style>{THEME_CSS}</style>
       <AppRoutes />
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
