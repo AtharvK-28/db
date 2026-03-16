@@ -35,7 +35,7 @@ const DEFAULT_CUSTOMERS = [
     score: 842,
     maxScore: 900,
     status: "safe",
-    balanceLabel: "â‚¹2,550",
+    balanceLabel: "\u20B92,550",
     balanceSub: "Today",
     balanceSubColor: t.muted,
     balanceColor: t.text,
@@ -48,7 +48,7 @@ const DEFAULT_CUSTOMERS = [
     score: 512,
     maxScore: 900,
     status: "caution",
-    balanceLabel: "â‚¹8,400",
+    balanceLabel: "\u20B98,400",
     balanceSub: "Overdue",
     balanceSubColor: t.red,
     balanceColor: t.red,
@@ -87,7 +87,7 @@ const DEFAULT_CUSTOMERS = [
     score: 245,
     maxScore: 900,
     status: "high-risk",
-    balanceLabel: "â‚¹12,200",
+    balanceLabel: "\u20B912,200",
     balanceSub: "Defaulter",
     balanceSubColor: t.red,
     balanceColor: t.red,
@@ -100,7 +100,7 @@ const DEFAULT_CUSTOMERS = [
     score: 790,
     maxScore: 900,
     status: "safe",
-    balanceLabel: "â‚¹1,120",
+    balanceLabel: "\u20B91,120",
     balanceSub: "Today",
     balanceSubColor: t.muted,
     balanceColor: t.text,
@@ -293,7 +293,7 @@ function SearchBar({ value, onChange }) {
           width: 20, height: 20, cursor: "pointer",
           display: "flex", alignItems: "center", justifyContent: "center",
           color: t.muted, fontSize: 12, fontWeight: 700,
-        }}>Ã—</button>
+        }}>\u00D7</button>
       )}
     </div>
   );
@@ -399,13 +399,13 @@ function CustomerCard({ customer, index, shown, onPress }) {
               <div style={{
                 fontSize: 12, fontWeight: 700,
                 color: customer.balanceColor,
-                fontFamily: customer.balanceLabel.startsWith("â‚¹") ? "'JetBrains Mono', monospace" : "'Sora', sans-serif",
+                fontFamily: customer.balanceLabel.startsWith("\u20B9") ? "'JetBrains Mono', monospace" : "'Sora', sans-serif",
               }}>
                 {customer.balanceLabel}
               </div>
             )}
             {customer.status === "new" ? (
-              <span className="verify-link">{customer.balanceSub} â†’</span>
+              <span className="verify-link">{customer.balanceSub} {"\u2192"}</span>
             ) : (
               <div style={{ fontSize: 10, color: customer.balanceSubColor, marginTop: customer.balanceLabel ? 2 : 0 }}>
                 {customer.balanceSub}

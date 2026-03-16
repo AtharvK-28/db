@@ -27,9 +27,9 @@ const t = {
 
 // â”€â”€â”€ Recent scan history (sample) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const SCAN_HISTORY = [
-  { id: 1, name: "Suresh Kumar",  initials: "SK", time: "10:45 AM", type: "Udhar", amount: "â‚¹450",   color: "#F56A00" },
-  { id: 2, name: "Priya Devi",    initials: "PD", time: "09:12 AM", type: "Jama",  amount: "+â‚¹1,200", color: "#0BAF60" },
-  { id: 3, name: "Vikram Singh",  initials: "VS", time: "Yesterday",type: "Udhar", amount: "â‚¹2,100", color: "#F56A00" },
+  { id: 1, name: "Suresh Kumar",  initials: "SK", time: "10:45 AM", type: "Udhar", amount: "\u20B9450",   color: "#F56A00" },
+  { id: 2, name: "Priya Devi",    initials: "PD", time: "09:12 AM", type: "Jama",  amount: "+\u20B91,200", color: "#0BAF60" },
+  { id: 3, name: "Vikram Singh",  initials: "VS", time: "Yesterday",type: "Udhar", amount: "\u20B92,100", color: "#F56A00" },
 ];
 
 // â”€â”€â”€ Injected global styles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -306,7 +306,7 @@ function SuccessOverlay({ customer, onConfirm, onCancel }) {
           <div style={{ background: "rgba(255,255,255,0.06)", borderRadius: 10, padding: "10px 12px" }}>
             <div style={{ fontSize: 10, color: t.muted, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4 }}>Trust Score</div>
             <div style={{ fontSize: 18, fontWeight: 800, color: t.green, fontFamily: "'JetBrains Mono', monospace" }}>{customer.score}</div>
-            <div style={{ fontSize: 10, color: t.green, marginTop: 2 }}>â†‘ High Trust</div>
+            <div style={{ fontSize: 10, color: t.green, marginTop: 2 }}>{"\u2191"} High Trust</div>
           </div>
           <div style={{ background: "rgba(255,255,255,0.06)", borderRadius: 10, padding: "10px 12px" }}>
             <div style={{ fontSize: 10, color: t.muted, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 4 }}>Balance</div>
@@ -365,7 +365,7 @@ function ManualPanel({ onSubmit, onClose }) {
           width: 30, height: 30, color: t.muted, cursor: "pointer",
           display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: 16, fontWeight: 700,
-        }}>Ã—</button>
+        }}>\u00D7</button>
       </div>
 
       <input
@@ -378,7 +378,7 @@ function ManualPanel({ onSubmit, onClose }) {
       />
 
       <div style={{ fontSize: 11, color: t.muted, marginTop: 8, marginBottom: 20 }}>
-        Enter the 6â€“10 digit GramSync Customer ID
+        Enter the 6-10 digit GramSync Customer ID
       </div>
 
       <button
@@ -421,7 +421,7 @@ function HistoryPanel({ history, onSelect, onClose }) {
           width: 30, height: 30, color: t.muted, cursor: "pointer",
           display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: 16, fontWeight: 700,
-        }}>Ã—</button>
+        }}>\u00D7</button>
       </div>
 
       {history.map((item) => (
@@ -436,7 +436,7 @@ function HistoryPanel({ history, onSelect, onClose }) {
           </div>
           <div style={{ flex: 1 }}>
             <div style={{ fontSize: 14, fontWeight: 600, color: "#fff" }}>{item.name}</div>
-            <div style={{ fontSize: 11, color: t.muted, marginTop: 1 }}>{item.type} Â· {item.time}</div>
+            <div style={{ fontSize: 11, color: t.muted, marginTop: 1 }}>{item.type} {"\u00B7"} {item.time}</div>
           </div>
           <div style={{ textAlign: "right" }}>
             <div style={{ fontSize: 13, fontWeight: 700, color: item.color, fontFamily: "'JetBrains Mono', monospace" }}>
@@ -585,7 +585,7 @@ export default function ScanQR({
         name:     "Amit Sharma",
         id:       "#GS-9982",
         score:    "850/1000",
-        balance:  "â‚¹4,250",
+        balance:  "\u20B94,250",
       });
     }, 2800);
     return () => clearTimeout(timerRef.current);
@@ -604,7 +604,7 @@ export default function ScanQR({
       name:     "Mahesh Khatri",
       id:       `#${id}`,
       score:    "620/1000",
-      balance:  "â‚¹1,800",
+      balance:  "\u20B91,800",
     });
   }, [handleScanResult]);
 
@@ -696,7 +696,7 @@ export default function ScanQR({
                   boxShadow: `0 0 6px ${t.blue}`,
                 }} />
                 <span style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.7)" }}>
-                  Scanningâ€¦
+                  Scanning...
                 </span>
               </>
             ) : (
