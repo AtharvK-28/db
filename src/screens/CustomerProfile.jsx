@@ -246,7 +246,7 @@ function TxnIcon({ type, synced }) {
 function ReminderSheet({ customer, onSend, onClose }) {
   const [channel, setChannel] = useState("whatsapp");
   const [msg, setMsg] = useState(
-    `Namaste ${customer.name}! Aapka GramSync balance ₹${customer.balance.toLocaleString("en-IN")} hai. Kripya jaldi payment karein. Dhanyawad! ðŸ™`
+    `Namaste ${customer.name}! Aapka GramSync balance ₹${customer.balance.toLocaleString("en-IN")} hai. Kripya jaldi payment karein. Dhanyawad! \u{1F64F}`
   );
   return (
     <div className="sheet-overlay" onClick={onClose}>

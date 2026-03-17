@@ -1,5 +1,5 @@
 ﻿    // ReportsDashboard.jsx
-// GramSync Merchant App â€” Reports & Analytics Screen
+// GramSync Merchant App - Reports & Analytics Screen
 // Features: period tabs, KPI cards, Udhar/Jama bar chart (Chart.js),
 //           recovery rate donut, top customers list, daily trend line,
 //           export sheet
@@ -426,13 +426,13 @@ function ExportSheet({ period, onClose }) {
         </div>
 
         {[
-          { label:"Download PDF", sub:"Full statement with charts", bg:t.red,    color:"#fff",  icon:"ðŸ“„" },
-          { label:"Export CSV",   sub:"Raw data for spreadsheets",  bg:t.green,  color:"#fff",  icon:"ðŸ“Š" },
-          { label:"Share on WhatsApp", sub:"Send summary to yourself", bg:"#25D366", color:"#fff", icon:"ðŸ’¬" },
+          { label:"Download PDF", sub:"Full statement with charts", bg:t.red,    color:"#fff",  icon:"\u{1F4C4}" },
+          { label:"Export CSV",   sub:"Raw data for spreadsheets",  bg:t.green,  color:"#fff",  icon:"\u{1F4CA}" },
+          { label:"Share on WhatsApp", sub:"Send summary to yourself", bg:"#25D366", color:"#fff", icon:"\u{1F4AC}" },
         ].map((opt, i) => (
           <button key={i} className="export-btn"
             style={{ background:opt.bg, color:opt.color }}
-            onClick={() => { alert(`${opt.label}â€¦`); onClose(); }}>
+            onClick={() => { alert(`${opt.label}...`); onClose(); }}>
             <span style={{ fontSize:16 }}>{opt.icon}</span>
             <div style={{ textAlign:"left" }}>
               <div style={{ fontWeight:700 }}>{opt.label}</div>
@@ -581,14 +581,14 @@ export default function ReportsDashboard({
 
           {/* Summary label */}
           <div style={{ padding:"10px 16px 0", fontSize:12, color:t.muted, fontWeight:500 }}>
-            {period === "7D" ? "Last 7 days" : period === "1M" ? "Last 30 days" : "Last 3 months"} Â· Updated just now
+            {period === "7D" ? "Last 7 days" : period === "1M" ? "Last 30 days" : "Last 3 months"} - Updated just now
           </div>
 
           {/* KPI grid */}
           <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:10, padding:"10px 16px 0" }} key={`kpi-${period}`}>
             <KpiCard
               label="Total Credit Given"
-              value={`â‚¹${(kpis.totalCredit / 1000).toFixed(1)}K`}
+              value={`\u20B9${(kpis.totalCredit / 1000).toFixed(1)}K`}
               sub={`${kpis.transactions} transactions`}
               subColor={t.muted}
               icon={<svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" stroke={t.orange} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
@@ -596,7 +596,7 @@ export default function ReportsDashboard({
             />
             <KpiCard
               label="Amount Collected"
-              value={`â‚¹${(kpis.collected / 1000).toFixed(1)}K`}
+              value={`\u20B9${(kpis.collected / 1000).toFixed(1)}K`}
               sub={`${kpis.recoveryRate}% recovery`}
               subColor={t.green}
               icon={<svg width="14" height="14" fill="none" viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7" stroke={t.green} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>}
@@ -604,7 +604,7 @@ export default function ReportsDashboard({
             />
             <KpiCard
               label="Pending Balance"
-              value={`â‚¹${(kpis.pending / 1000).toFixed(1)}K`}
+              value={`\u20B9${(kpis.pending / 1000).toFixed(1)}K`}
               sub="outstanding"
               subColor={kpis.pending > 10000 ? t.orange : t.muted}
               icon={<svg width="14" height="14" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke={t.yellow} strokeWidth="1.8"/><path d="M12 7v5l3 3" stroke={t.yellow} strokeWidth="1.8" strokeLinecap="round"/></svg>}
@@ -660,7 +660,7 @@ export default function ReportsDashboard({
           <div className="section-card">
             <SectionHeader title="Net Position Trend"/>
               <div style={{ padding:"0 16px 8px", fontSize:11, color:t.muted }}>
-              Daily Udhar minus Jama â€” positive = you're giving more credit
+              Daily Udhar minus Jama - positive = you're giving more credit
             </div>
             <TrendLine
               key={`trend-${period}-${chartKey}`}
@@ -702,7 +702,7 @@ export default function ReportsDashboard({
               <div style={{ fontSize:12, color:t.blue, lineHeight:1.6, opacity:0.8 }}>
                 {kpis.recoveryRate < 65
                   ? `Recovery rate is below 65%. Consider sending reminders to ${d.topCustomers.filter(c=>c.overdue).length} overdue customers.`
-                  : `Recovery rate is healthy at ${kpis.recoveryRate}%. Your top risk customer owes â‚¹${d.topCustomers[0].balance.toLocaleString("en-IN")}.`}
+                  : `Recovery rate is healthy at ${kpis.recoveryRate}%. Your top risk customer owes \u20B9${d.topCustomers[0].balance.toLocaleString("en-IN")}.`}
               </div>
             </div>
           </div>

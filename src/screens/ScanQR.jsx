@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿// GramSync - Integrated QR Scanner + Customer Profile
-=======
 // GramSync - Integrated QR Scanner + Customer Profile
->>>>>>> f795f2a
 // ScanQR opens camera -> jsQR decodes customer ID -> CustomerProfile slides up
 // Pure React, jsQR via CDN for real QR decoding
 
