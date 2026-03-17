@@ -253,7 +253,7 @@ function EditProfileModal({ profile, onSave, onClose }) {
             background: t.bg, border: "none", borderRadius: "50%",
             width: 30, height: 30, cursor: "pointer", color: t.muted,
             display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 700,
-          }}>Ã—</button>
+          }}>\u00D7</button>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 20 }}>
           {[
@@ -584,7 +584,7 @@ export default function Settings({
               </div>
               <div style={{ flex: 1 }}>
                 <div style={{ fontSize: 14, fontWeight: 600, color: t.text }}>App Version</div>
-                <div style={{ fontSize: 11, color: t.muted, marginTop: 1 }}>v2.4.1 (build 441) Â· Up to date</div>
+                <div style={{ fontSize: 11, color: t.muted, marginTop: 1 }}>v2.4.1 (build 441) {"\u00B7"} Up to date</div>
               </div>
               <span style={{ fontSize: 11, fontWeight: 700, color: t.green, background: t.greenPale, borderRadius: 6, padding: "3px 8px" }}>
                 Latest
@@ -646,7 +646,7 @@ export default function Settings({
           </div>
 
           <div style={{ textAlign: "center", padding: "8px 0 4px", fontSize: 11, color: t.muted }}>
-            GramSync Merchant Â· v2.4.1 Â· Â© 2024 GramSync Technologies
+            GramSync Merchant {"\u00B7"} v2.4.1 {"\u00B7"} {"\u00A9"} 2024 GramSync Technologies
           </div>
           <div style={{ height: 12 }} />
         </div>

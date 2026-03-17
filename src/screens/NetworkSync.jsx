@@ -150,15 +150,15 @@ const GLOBAL_CSS = `
 
 // â”€â”€â”€ Sample queue data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const ONLINE_QUEUE = [
-  { id: 1, name: "Suresh Kumar", type: "Udhar", amount: "â‚¹450",  status: "pending",  statusLabel: "Waitingâ€¦",    statusColor: "#F5A623" },
-  { id: 2, name: "Rohit Nair",   type: "Udhar", amount: "â‚¹350",  status: "retrying", statusLabel: "Retry in 30s", statusColor: "#7A85A3" },
-  { id: 3, name: "Sunita Joshi", type: "Jama",  amount: "â‚¹200",  status: "failed",   statusLabel: "RETRY NOW",    statusColor: "#E8304A" },
+  { id: 1, name: "Suresh Kumar", type: "Udhar", amount: "\u20B9450",  status: "pending",  statusLabel: "Waiting...",    statusColor: "#F5A623" },
+  { id: 2, name: "Rohit Nair",   type: "Udhar", amount: "\u20B9350",  status: "retrying", statusLabel: "Retry in 30s", statusColor: "#7A85A3" },
+  { id: 3, name: "Sunita Joshi", type: "Jama",  amount: "\u20B9200",  status: "failed",   statusLabel: "RETRY NOW",    statusColor: "#E8304A" },
 ];
 
 const OFFLINE_QUEUE = [
-  { id: 1, name: "Udhar: Ramesh Kumar",     type: "â‚¹1,200 â€¢ Pending upload",  icon: "ledger" },
-  { id: 2, name: "New Customer: Anita Singh", type: "Profile draft â€¢ Pending upload", icon: "person" },
-  { id: 3, name: "Jama: Sunil Gupta",       type: "â‚¹500 â€¢ Pending upload",    icon: "wallet" },
+  { id: 1, name: "Udhar: Ramesh Kumar",     type: "\u20B91,200 \u2022 Pending upload",  icon: "ledger" },
+  { id: 2, name: "New Customer: Anita Singh", type: "Profile draft \u2022 Pending upload", icon: "person" },
+  { id: 3, name: "Jama: Sunil Gupta",       type: "\u20B9500 \u2022 Pending upload",    icon: "wallet" },
 ];
 
 const OFFLINE_WORKS    = ["Record Udhar & Jama transactions", "View full customer ledger history", "Scan QR cards (locally cached)", "Enforce local credit limits"];
@@ -389,7 +389,7 @@ function OnlineQueue({ queue, onRetry }) {
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 14, fontWeight: 600, color: t.text }}>{item.name}</div>
               <div style={{ fontSize: 11, color: t.muted, marginTop: 1 }}>
-                {item.type} â€¢ {item.status === "pending" ? "Pending" : item.status === "retrying" ? "Retrying" : "Failed"}
+                {item.type} {"\u2022"} {item.status === "pending" ? "Pending" : item.status === "retrying" ? "Retrying" : "Failed"}
               </div>
             </div>
             <div style={{ textAlign: "right" }}>
@@ -408,7 +408,7 @@ function OnlineQueue({ queue, onRetry }) {
                   fontSize: 11, fontWeight: 600,
                 }}>Retry in 30s</span>
               ) : (
-                <span style={{ fontSize: 11, color: t.yellow, fontWeight: 600 }}>Waitingâ€¦</span>
+                <span style={{ fontSize: 11, color: t.yellow, fontWeight: 600 }}>Waiting...</span>
               )}
             </div>
           </div>
@@ -697,7 +697,7 @@ export default function NetworkSync({
                 <path d="M4 12a8 8 0 018-8v2m8 6a8 8 0 01-8 8v-2" stroke="#fff" strokeWidth="2.2" strokeLinecap="round"/>
                 <path d="M12 4l2-2-2-2M12 20l-2 2 2 2" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              {syncing ? "Syncingâ€¦" : "Sync All Data"}
+              {syncing ? "Syncing..." : "Sync All Data"}
             </button>
           </div>
         )}

@@ -254,7 +254,7 @@ function ReminderSheet({ customer, onSend, onClose }) {
         <div className="sheet-handle"/>
         <div style={{ fontSize:16, fontWeight:700, color:t.text, marginBottom:4 }}>Send Payment Reminder</div>
         <div style={{ fontSize:12, color:t.muted, marginBottom:18 }}>
-          to <strong style={{ color:t.text }}>{customer.name}</strong> â€” Balance: <strong style={{ color:t.orange }}>₹{customer.balance.toLocaleString("en-IN")}</strong>
+          to <strong style={{ color:t.text }}>{customer.name}</strong> - Balance: <strong style={{ color:t.orange }}>₹{customer.balance.toLocaleString("en-IN")}</strong>
         </div>
 
         {/* Channel selector */}
@@ -356,7 +356,7 @@ function TxnDetailSheet({ txn, onClose }) {
           {[
             { label:"Description", value:txn.label },
             { label:"Transaction ID", value:`#TXN-${10000 + txn.id}` },
-            { label:"Sync Status", value: txn.synced ? "âœ“ Synced to Cloud" : "â³ Pending Sync", valueColor: txn.synced ? t.green : t.yellow },
+            { label:"Sync Status", value: txn.synced ? "\u2713 Synced to Cloud" : "\u23F3 Pending Sync", valueColor: txn.synced ? t.green : t.yellow },
             ...(txn.note ? [{ label:"Note", value:txn.note }] : []),
           ].map((row, i) => (
             <div key={i} style={{ display:"flex", justifyContent:"space-between", padding:"6px 0", borderBottom: i < 3 ? `1px solid ${t.border}` : "none" }}>
@@ -415,7 +415,7 @@ function ScoreSheet({ customer, onClose }) {
         </div>
 
         <div style={{ background:t.bluePale, borderRadius:12, padding:"12px 14px", fontSize:11, color:t.blue, lineHeight:1.6 }}>
-          â„¹ Score reflects payment behaviour across the GramSync merchant network. Range: 300 (poor) â€“ 900 (excellent).
+          Score reflects payment behaviour across the GramSync merchant network. Range: 300 (poor) - 900 (excellent).
         </div>
       </div>
     </div>
@@ -557,10 +557,10 @@ function TransactionList({ transactions, filter, onTxnPress }) {
                   </div>
                   <div style={{ textAlign:"right" }}>
                     <div style={{ fontSize:14, fontWeight:700, fontFamily:"'JetBrains Mono',monospace", color: isUdhar ? t.orange : t.green }}>
-                      {isUdhar ? "âˆ’" : "+"}₹{tx.amount.toLocaleString("en-IN")}
+                      {isUdhar ? "\u2212" : "+"}\u20B9{tx.amount.toLocaleString("en-IN")}
                     </div>
                     <div style={{ fontSize:10, fontWeight:600, color: tx.synced ? t.green : t.yellow, marginTop:2 }}>
-                      {tx.synced ? "âœ“ SYNCED" : "â³ PENDING"}
+                      {tx.synced ? "\u2713 SYNCED" : "\u23F3 PENDING"}
                     </div>
                   </div>
                 </div>
@@ -672,7 +672,7 @@ export default function CustomerProfile({
 
   const handleSendReminder = useCallback((channel, msg) => {
     setSheet(null);
-    alert(`âœ“ Reminder sent via ${channel}`);
+    alert(`\u2713 Reminder sent via ${channel}`);
   }, []);
 
   return (
@@ -688,7 +688,7 @@ export default function CustomerProfile({
           customer={resolvedCustomer}
           onBack={onBack}
           onCall={() => window.open(`tel:${resolvedCustomer.phone}`)}
-          onDownload={() => alert("Downloading PDF statementâ€¦")}
+          onDownload={() => alert("Downloading PDF statement...")}
         />
 
         <div style={{ flex:1, overflowY:"auto" }}>

@@ -183,7 +183,7 @@ function UdharJamaChart({ labels, udharData, jamaData, period }) {
           legend: { display: false },
           tooltip: {
             callbacks: {
-              label: ctx => ` â‚¹${ctx.raw.toLocaleString("en-IN")}`,
+              label: (ctx) => ` \u20B9${ctx.raw.toLocaleString("en-IN")}`,
             },
           },
         },
@@ -198,7 +198,7 @@ function UdharJamaChart({ labels, udharData, jamaData, period }) {
             ticks: {
               font: { family: "'JetBrains Mono',monospace", size: 10 },
               color: "#7A85A3",
-              callback: v => "â‚¹" + (v >= 1000 ? (v/1000).toFixed(0)+"K" : v),
+              callback: (v) => "\u20B9" + (v >= 1000 ? (v / 1000).toFixed(0) + "K" : v),
             },
             border: { display: false },
           },
@@ -265,14 +265,14 @@ function RecoveryDonut({ rate, collected, pending }) {
         <div>
           <div style={{ fontSize:11, color:t.muted, marginBottom:3 }}>Collected</div>
           <div style={{ fontSize:16, fontWeight:800, color:t.green, fontFamily:"'JetBrains Mono',monospace" }}>
-            â‚¹{collected.toLocaleString("en-IN")}
+            {"\u20B9"}{collected.toLocaleString("en-IN")}
           </div>
         </div>
         <div style={{ height:1, background:t.border }}/>
         <div>
           <div style={{ fontSize:11, color:t.muted, marginBottom:3 }}>Still Pending</div>
           <div style={{ fontSize:16, fontWeight:800, color:t.orange, fontFamily:"'JetBrains Mono',monospace" }}>
-            â‚¹{pending.toLocaleString("en-IN")}
+            {"\u20B9"}{pending.toLocaleString("en-IN")}
           </div>
         </div>
       </div>
@@ -315,7 +315,7 @@ function TrendLine({ labels, data }) {
             callbacks: {
               label: ctx => {
                 const v = ctx.raw;
-                return ` ${v >= 0 ? "+" : ""}â‚¹${v.toLocaleString("en-IN")}`;
+                return ` ${v >= 0 ? "+" : ""}\u20B9${v.toLocaleString("en-IN")}`;
               },
             },
           },
@@ -398,7 +398,7 @@ function TopCustomers({ customers, onPress }) {
             </div>
             <div style={{ textAlign:"right" }}>
               <div style={{ fontSize:14, fontWeight:700, color: c.overdue ? t.red : t.text, fontFamily:"'JetBrains Mono',monospace" }}>
-                â‚¹{c.balance.toLocaleString("en-IN")}
+                {"\u20B9"}{c.balance.toLocaleString("en-IN")}
               </div>
               {c.overdue && (
                 <span style={{

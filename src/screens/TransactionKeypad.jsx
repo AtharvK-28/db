@@ -283,7 +283,7 @@ function SuccessSheet({ type, amount, customer, remarks, onDone, onNewTransactio
             {isUdhar ? "Credit Given" : "Payment Received"}
           </div>
           <div style={{ fontSize: 38, fontWeight: 800, color: t.text, fontFamily: "'JetBrains Mono', monospace" }}>
-            {"\u20B9"}{formattedAmount}
+            {"\u20B9"}{amount}
           </div>
           {customer && (
             <div style={{ fontSize: 14, color: t.muted, marginTop: 6 }}>
@@ -303,7 +303,7 @@ function SuccessSheet({ type, amount, customer, remarks, onDone, onNewTransactio
           {[
             { label: "Transaction ID", value: `#TXN-${Math.floor(Math.random() * 90000) + 10000}` },
             { label: "Time",           value: new Date().toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" }) },
-            { label: "Sync Status",    value: "âœ“ Synced to Cloud", valueColor: t.green },
+            { label: "Sync Status",    value: "\u2713 Synced to Cloud", valueColor: t.green },
           ].map((row, i) => (
             <div key={i} style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
               <span style={{ fontSize: 12, color: t.muted }}>{row.label}</span>
@@ -368,7 +368,7 @@ function CustomerSheet({ onSelect, onScanQR, onClose }) {
               background: t.bg, border: "none", borderRadius: "50%",
               width: 30, height: 30, cursor: "pointer", color: t.muted,
               display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, fontWeight: 700,
-            }}>Ã—</button>
+            }}>\u00D7</button>
           </div>
 
           {/* Scan QR option */}
@@ -402,7 +402,7 @@ function CustomerSheet({ onSelect, onScanQR, onClose }) {
             </svg>
             <input
               value={query} onChange={e => setQuery(e.target.value)}
-              placeholder="Search by name or phoneâ€¦"
+              placeholder="Search by name or phone..."
               style={{
                 width: "100%", padding: "11px 14px 11px 36px",
                 border: `1.5px solid ${t.border}`, borderRadius: 10,
@@ -541,7 +541,7 @@ function AmountDisplay({ value, animKey, shake }) {
           : "none",
         key: animKey,
       }}>
-        <span style={{ fontSize: 30, fontWeight: 400, color: t.muted, fontFamily: "'JetBrains Mono', monospace", lineHeight: 1 }}>â‚¹</span>
+        <span style={{ fontSize: 30, fontWeight: 400, color: t.muted, fontFamily: "'JetBrains Mono', monospace", lineHeight: 1 }}>{"\u20B9"}</span>
         <span style={{
           fontSize: formatted.length > 7 ? 40 : 56,
           fontWeight: 800, color: t.blue,
@@ -590,7 +590,7 @@ function RemarksRow() {
         <input
           ref={inputRef}
           className="remarks-input"
-          placeholder="Add remarksâ€¦"
+          placeholder="Add remarks..."
           value={remarks}
           onChange={e => setRemarks(e.target.value)}
           onBlur={() => { if (!remarks) setEditing(false); }}
@@ -646,7 +646,7 @@ function CustomerChip({ customer, onClear, onOpen }) {
         background: "none", border: "none", cursor: "pointer",
         color: t.muted, fontSize: 16, fontWeight: 700,
         display: "flex", alignItems: "center", lineHeight: 1, padding: 0,
-      }}>Ã—</button>
+      }}>\u00D7</button>
     </div>
   );
 }
